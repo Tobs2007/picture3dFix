@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/tobs/Documents/ResoMods/picture3dFix/picture3dFix/picture3dFix.csproj": {}
+  },
+  "projects": {
+    "/home/tobs/Documents/ResoMods/picture3dFix/picture3dFix/picture3dFix.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/tobs/Documents/ResoMods/picture3dFix/picture3dFix/picture3dFix.csproj",
+        "projectName": "picture3dFix",
+        "projectPath": "/home/tobs/Documents/ResoMods/picture3dFix/picture3dFix/picture3dFix.csproj",
+        "packagesPath": "/home/tobs/.nuget/packages/",
+        "outputPath": "/home/tobs/Documents/ResoMods/picture3dFix/picture3dFix/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/tobs/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.108/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
