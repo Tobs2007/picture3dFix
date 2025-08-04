@@ -1,7 +1,7 @@
 using FrooxEngine;
 using HarmonyLib;
 using ResoniteModLoader;
-using ResoniteHotReloadLib;
+//using ResoniteHotReloadLib;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -21,7 +21,7 @@ public class picture3dFix : ResoniteMod {
 
 
 	public override void OnEngineInit() {
-		HotReloader.RegisterForHotReload(this);
+		//HotReloader.RegisterForHotReload(this);
 		init();
 	}
 	static void init() {
@@ -32,17 +32,11 @@ public class picture3dFix : ResoniteMod {
 			.GetNestedType("<>c__DisplayClass63_0", BindingFlags.Instance | BindingFlags.NonPublic)
 			.GetNestedType("<<TakePhoto>b__0>d", BindingFlags.Instance | BindingFlags.NonPublic)
 			.GetMethod("MoveNext", BindingFlags.Instance | BindingFlags.NonPublic);
-		Msg("got the function");
 		var pfix = typeof(PatchFingerPhoto).GetMethod("postfix", BindingFlags.Static | BindingFlags.Public);
-
 		Msg(og.GetType().ToString());
-		Msg("1");
 		Msg(pfix.GetType().ToString());
-		Msg("prepatch");
 		harmony.Patch(og, postfix: pfix);
-		Msg("postpatch");
 		harmony.PatchAll();
-		Msg("initilized picture3dfix");
 	}
 	static void BeforeHotReload() {
 
