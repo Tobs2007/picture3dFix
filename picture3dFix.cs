@@ -1,13 +1,16 @@
 using FrooxEngine;
 using HarmonyLib;
 using ResoniteModLoader;
+
+using System.CodeDom;
+
 //using ResoniteHotReloadLib;
 using System.Collections.Generic;
 using System.Reflection;
 
 namespace picture3dFix;
 public class picture3dFix : ResoniteMod {
-	internal const string VERSION_CONSTANT = "1.0.0";
+	internal const string VERSION_CONSTANT = "1.1.0";
 	public override string Name => "picture3dFix";
 	public override string Author => "Tobs";
 	public override string Version => VERSION_CONSTANT;
@@ -15,9 +18,8 @@ public class picture3dFix : ResoniteMod {
 	
 	const string harmonyId = "com.tobsstuff.picture3dFix";
 
-			
-
-
+	[AutoRegisterConfigKey]
+	private static readonly ModConfigurationKey<bool> enabled = new("enabled", "should this mod be anables", () => true);
 
 
 	public override void OnEngineInit() {
@@ -85,7 +87,9 @@ public class picture3dFix : ResoniteMod {
 	
 
 	static void fixSlot(Slot slot) {
-		slot.GetComponent<QuadMesh>().DualSided.Value = true;
-		slot.GetComponent<UnlitMaterial>().Sidedness.Value = Sidedness.Front;
+		if (enabled.Value) {
+			slot.GetComponent<QuadMesh>().DualSided.Value = true;
+			slot.GetComponent<UnlitMaterial>().Sidedness.Value = Sidedness.Front;
+		}
 	}
 }
