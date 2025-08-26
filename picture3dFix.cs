@@ -4,13 +4,13 @@ using ResoniteModLoader;
 
 using System.CodeDom;
 
-using ResoniteHotReloadLib;
+//using ResoniteHotReloadLib;
 using System.Collections.Generic;
 using System.Reflection;
 
 namespace picture3dFix;
 public class picture3dFix : ResoniteMod {
-	internal const string VERSION_CONSTANT = "1.1.1";
+	internal const string VERSION_CONSTANT = "1.1.2";
 	public override string Name => "picture3dFix";
 	public override string Author => "Tobs";
 	public override string Version => VERSION_CONSTANT;
@@ -23,7 +23,9 @@ public class picture3dFix : ResoniteMod {
 
 
 	public override void OnEngineInit() {
-		HotReloader.RegisterForHotReload(this);
+
+
+		//HotReloader.RegisterForHotReload(this);
 		init(this);
 	}
 	static void init(ResoniteMod _instance) {
