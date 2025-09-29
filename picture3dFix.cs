@@ -2,6 +2,7 @@ using FrooxEngine;
 using HarmonyLib;
 using ResoniteModLoader;
 
+using System;
 using System.CodeDom;
 
 //using ResoniteHotReloadLib;
@@ -10,7 +11,7 @@ using System.Reflection;
 
 namespace picture3dFix;
 public class picture3dFix : ResoniteMod {
-	internal const string VERSION_CONSTANT = "1.1.2";
+	internal const string VERSION_CONSTANT = "1.1.3";
 	public override string Name => "picture3dFix";
 	public override string Author => "Tobs";
 	public override string Version => VERSION_CONSTANT;
@@ -71,18 +72,18 @@ public class picture3dFix : ResoniteMod {
 	// Patch for finger photo
 	public static class PatchFingerPhoto {
 		public static void postfix() {
-			try {
-				User user = Engine.Current.WorldManager.FocusedWorld.LocalUser;
-				Slot userRoot = user.LocalUserRoot.Slot;
-				List<Slot> children = userRoot.GetAllChildren();
-				Slot img = children[children.Count - 1];
-				if (img.Name == "Photo") {
-					fixSlot(img);
-				} else if (img.Name == "PhotoTempHolder") {
-					List<Slot> ls = img.GetAllChildren();
-					fixSlot(ls[ls.Count - 1]);
-				} else { Msg("Image not found (this is normal)"); }
-			} catch (System.Exception e) { Msg("error while getting photo" + e.ToString()); }
+
+					User user = Engine.Current.WorldManager.FocusedWorld.LocalUser;
+					Slot userRoot = user.LocalUserRoot.Slot;
+					List<Slot> children = userRoot.GetAllChildren();
+					Slot img = children[children.Count - 1];
+					if (img.Name == "Photo") {
+						fixSlot(img);
+					} else if (img.Name == "PhotoTempHolder") {
+						List<Slot> ls = img.GetAllChildren();
+						fixSlot(ls[ls.Count - 1]);
+					} 
+
 		}
 	}
 
@@ -91,9 +92,9 @@ public class picture3dFix : ResoniteMod {
 
 	static void fixSlot(Slot slot) {
 		if (enabled.Value) {
-			Msg("Fixing slot " + slot.Name);
-			slot.GetComponent<QuadMesh>().DualSided.Value = true;
-			slot.GetComponent<UnlitMaterial>().Sidedness.Value = Sidedness.Front;
+
+				slot.GetComponent<QuadMesh>().DualSided.Value = true;
+				slot.GetComponent<UnlitMaterial>().Sidedness.Value = Sidedness.Front;
 		}
 	}
 }
